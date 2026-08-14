@@ -4,6 +4,8 @@
 
 ContextSlim prunes massive JSON payloads by up to **85%**, enforces strict token budgets, and handles autonomous HTTP 402 EIP-712 micropayments—keeping agent execution fast, cost-effective, and deterministically within LLM context limits.
 
+[![smithery badge](https://smithery.ai/badge/friczero-com/contextslim)](https://smithery.ai/servers/friczero-com/contextslim)
+
 ---
 
 ## Proven E2E Benchmarks
