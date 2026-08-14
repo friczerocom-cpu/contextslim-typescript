@@ -1,16 +1,16 @@
 {
   "name": "@contextslim/sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official TypeScript SDK for ContextSlim MCP Optimization and x402 Middleware",
-  "main": "dist/client.cjs",
-  "module": "dist/client.js",
-  "types": "dist/client.d.ts",
+  "main": "./dist/client.cjs",
+  "module": "./dist/client.js",
+  "types": "./dist/client.d.ts",
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/client.d.ts",
       "import": "./dist/client.js",
-      "require": "./dist/client.cjs",
-      "types": "./dist/client.d.ts"
+      "require": "./dist/client.cjs"
     }
   },
   "keywords": [
@@ -31,7 +31,7 @@
     "sdk"
   ],
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "build": "tsup src/client.ts --format cjs,esm --dts",
     "check": "tsc --noEmit"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.23.12",
     "typescript": "^5.9.3"
   },
