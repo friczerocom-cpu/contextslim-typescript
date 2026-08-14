@@ -137,9 +137,11 @@ async function main() {
     maxTokenBudget: 150,
   });
 
-  const refId = prep.result.toolResultReference.referenceId;
+  const res = prep.result || {};
+  const refId = res.toolResultReference?.referenceId || res.referenceId;
   console.log(` Reference Cached in KV: ${refId}`);
-  console.log(` Saved Tokens: ${prep.metrics.savedTokens}`);
+  console.log(` Saved Tokens: ${prep.metrics?.savedTokens}`);
+  console.log(` Compression Ratio: ${prep.metrics?.compressionRatio}`);
 
   // 4. Targeted Path Extraction (fetch_result)
   console.log(" Retrieving only 'critical_alert.severity'...");
@@ -238,11 +240,9 @@ Reduces complex JSON structures while preserving critical fields and inserting t
     // ... pruned payload
   },
   metrics: {
-    originalTokens: 622,
-    slimmedTokens: 94,
-    savedTokens: 528,
-    reductionPercentage: "84.9%",
-    strategyApplied: "recursive:arrays(47_items)"
+    savedTokens: "528",
+    compressionRatio: "84.9%",
+    strategy: "recursive:arrays(47_items)"
   }
 }
 ```
@@ -278,4 +278,4 @@ Retrieves exact data subsets from a cached reference ID.
 
 ## License
 
-This project is licensed under the [MIT License](https://www.google.com/search?q=LICENSE).
+This project is licensed under the [MIT License](LICENSE).
