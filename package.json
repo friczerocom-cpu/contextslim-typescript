@@ -1,6 +1,6 @@
 {
   "name": "@contextslim/sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Official TypeScript SDK for ContextSlim MCP Optimization and x402 Middleware",
   "main": "./dist/client.cjs",
   "module": "./dist/client.js",
