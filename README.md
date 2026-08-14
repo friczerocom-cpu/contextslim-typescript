@@ -141,7 +141,7 @@ async function main() {
   const refId = res.toolResultReference?.referenceId || res.referenceId;
   console.log(`Reference Cached in KV: ${refId}`);
   console.log(`Saved Tokens: ${prep.metrics?.savedTokens}`);
-  console.log(`Compression Ratio: ${prep.metrics?.compressionRatio}`);
+  console.log(`Compression Ratio: ${prep.metrics?.reductionPercentage}`);
 
   // 4. Targeted Path Extraction (fetch_result)
   console.log("Retrieving only 'critical_alert.severity'...");
@@ -213,7 +213,7 @@ const client = new ContextSlimClient({
 | --- | --- | --- | --- |
 | `endpoint` | `string` | **Required** | Base URL of the ContextSlim Worker (`https://contextslim.friczero.com`). |
 | `signer` | `ethers.Signer` | **Required** | Ethers Signer implementation for ERC-3009/EIP-712 payment authorizations. |
-| `allowanceBudget` | `number` | `0` | USDC budget to pre-approve a Session Pass (reduces latency). |
+| `allowanceBudget` | `number` | `0` | USDC budget to pre-approve a Session Pass (base price: **$0.001 USDC/call**; on-chain settlement triggers at **$0.005 USDC**). |
 | `maxTokenBudget` | `number` | `1000` | Default response token limit. |
 
 ---
@@ -241,7 +241,7 @@ Reduces complex JSON structures while preserving critical fields and inserting t
   },
   metrics: {
     savedTokens: "528",
-    compressionRatio: "84.9%",
+    reductionPercentage: "84.9%",
     strategy: "recursive:arrays(47_items)"
   }
 }
