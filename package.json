@@ -1,0 +1,40 @@
+{
+  "name": "@contextslim/sdk",
+  "version": "1.0.0",
+  "description": "Official TypeScript SDK for ContextSlim MCP Optimization and x402 Middleware",
+  "main": "dist/client.cjs",
+  "module": "dist/client.js",
+  "types": "dist/client.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/client.js",
+      "require": "./dist/client.cjs",
+      "types": "./dist/client.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ethers": "^6.17.0",
+    "js-tiktoken": "^1.0.15",
+    "viem": "^2.55.13"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3"
+  },
+  "author": "ContextSlim",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/friczerocom-cpu/contextslim-typescript"
+  }
+}
