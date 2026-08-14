@@ -92,7 +92,7 @@ Add the following configuration to your `claude_desktop_config.json` file:
 One-click installation via Smithery:
 
 ```bash
-npx -y @smithery/cli install context-slim --client claude
+npx -y @smithery/cli install contextslim --client claude
 ```
 
 ---
@@ -131,7 +131,7 @@ async function main() {
     logs: Array.from({ length: 100 }, (_, i) => `Log entry #${i + 1}: Activity sweep`),
   };
 
-  console.log(" Optimizing massive context...");
+  console.log("Optimizing massive context...");
   const prep = await client.callTool("optimize_context", {
     data: heavyPayload,
     maxTokenBudget: 150,
@@ -139,18 +139,18 @@ async function main() {
 
   const res = prep.result || {};
   const refId = res.toolResultReference?.referenceId || res.referenceId;
-  console.log(` Reference Cached in KV: ${refId}`);
-  console.log(` Saved Tokens: ${prep.metrics?.savedTokens}`);
-  console.log(` Compression Ratio: ${prep.metrics?.compressionRatio}`);
+  console.log(`Reference Cached in KV: ${refId}`);
+  console.log(`Saved Tokens: ${prep.metrics?.savedTokens}`);
+  console.log(`Compression Ratio: ${prep.metrics?.compressionRatio}`);
 
   // 4. Targeted Path Extraction (fetch_result)
-  console.log(" Retrieving only 'critical_alert.severity'...");
+  console.log("Retrieving only 'critical_alert.severity'...");
   const extracted = await client.callTool("fetch_result", {
     referenceId: refId,
     paths: ["critical_alert.severity"],
   });
 
-  console.log("Result:", JSON.stringify(extracted.result, null, 2));
+  console.log("Result:", JSON.stringify(extracted?.result ?? {}, null, 2));
   // Returns only 9 tokens: { critical_alert: { severity: 'CRITICAL' } }
 }
 
@@ -227,8 +227,8 @@ Unified invocation compatible with MCP JSON-RPC.
 Reduces complex JSON structures while preserving critical fields and inserting truncated reference markers (`_slim`).
 
 * **Parameters:**
-* `data` (`object`, required) - Full JSON payload to optimize.
-* `maxTokenBudget` (`number`, optional) - Hard token limit for the response payload.
+  * `data` (`object`, required) - Full JSON payload to optimize.
+  * `maxTokenBudget` (`number`, optional) - Hard token limit for the response payload.
 
 * **Response:**
 
@@ -252,8 +252,8 @@ Reduces complex JSON structures while preserving critical fields and inserting t
 Retrieves exact data subsets from a cached reference ID.
 
 * **Parameters:**
-* `referenceId` (`string`, required) - ID returned by `optimize_context`.
-* `paths` (`string[]`, optional) - Dot-notation field paths to extract (e.g., `["user.id", "items[0].price"]`).
+  * `referenceId` (`string`, required) - ID returned by `optimize_context`.
+  * `paths` (`string[]`, optional) - Dot-notation field paths to extract (e.g., `["user.id", "items[0].price"]`).
 
 * **Response:**
 
