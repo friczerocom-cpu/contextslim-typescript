@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
+  id-token: write 
   contents: read
 
 jobs:
@@ -16,6 +16,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+
+      - name: Actualizar npm a la versión más reciente
+        run: npm install -g npm@latest
 
       - run: npm ci
       - run: npm run build
