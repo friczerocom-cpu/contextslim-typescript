@@ -13,6 +13,23 @@
       "types": "./dist/client.d.ts"
     }
   },
+  "keywords": [
+    "contextslim",
+    "mcp",
+    "model-context-protocol",
+    "x402",
+    "middleware",
+    "llm",
+    "ai",
+    "context-optimization",
+    "tiktoken",
+    "web3",
+    "ethereum",
+    "viem",
+    "ethers",
+    "typescript",
+    "sdk"
+  ],
   "scripts": {
     "build": "tsc && tsc -p tsconfig.cjs.json",
     "check": "tsc --noEmit"
